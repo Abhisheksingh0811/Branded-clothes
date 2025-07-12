@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Navbar</title>
+
+    <style>
+
+        *{
+
+            margin:0;
+
+            padding:0;
+
+            box-sizing: border-box;
+
+            font-family: sans-serif;
+
+        }
+
+        body{
+
+            position: relative;
+
+            min-height: 100vh;
+
+            background-color: powderblue;
+
+        }
+
+        #header{
+
+           height: 80px;
+
+           background-color: aqua;
+
+           width:100%;
+
+           display: flex;
+
+           flex-direction: row;
+
+           align-items: center;
+
+           padding:0 50px;
+
+           box-shadow: 0 10px 20px rgba(0,0,0,0.23);
+
+        }
+
+        #logo{
+
+            font-size:36px;
+
+            font-weight: 600;
+
+            color:#f00;
+
+        }
+
+        #navitems{
+
+            position: relative;
+
+            width:400px;
+
+            display: flex;
+
+            flex-direction: row;
+
+            justify-content:space-between;
+
+            margin-left:300px;
+
+            transition:all 300ms ease;
+
+        }
+#searchbar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#search-input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#search-btn {
+    padding: 6px 12px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#search-btn:hover {
+    background-color: #555;
+}
+
+        #navitems a{
+
+            font-size:18px;
+
+            color:#444;
+
+            text-decoration: none;
+
+        }
+
+       #header input[type='checkbox']{
+
+        position: absolute;
+
+        top:20px;
+
+        right:100px;
+
+        height:36px;
+
+        width:36px;
+
+        cursor:pointer;
+
+        z-index: 5;
+
+        opacity: 0;
+
+        
+
+       }    
+
+       #hamburger{
+
+        position: absolute;
+
+        top:20px;
+
+        right:50px;
+
+        height:36px;
+
+        width:36px;
+
+        z-index: 3;
+
+        border:2px solid #333;
+
+        border-radius:4px;
+
+        display: none;
+
+       }
+
+       #hamburger span{
+
+        display:block;
+
+        height:5px;
+
+        width:30px;
+
+        border-radius: 2.5px;
+
+        background-color: #333;
+
+        position: absolute;
+
+        left:1px;
+
+        transition: 300ms ease-in-out;
+
+       }
+
+       #hamburger span:nth-child(1){
+
+        top:4px;
+
+        transform-origin: 2px 5px;
+
+       }
+
+       #hamburger span:nth-child(2){
+
+         top:13px;
+
+       }
+
+       #hamburger span:nth-child(3){
+
+        bottom:4px;
+
+        transform-origin: 2px 0px;
+
+       }
+
+       input[type='checkbox']:checked ~ #hamburger span:nth-child(1){
+
+         rotate:45deg;
+
+         left:3px;
+
+       }
+
+       input[type='checkbox']:checked ~ #hamburger span:nth-child(2){
+
+         scale:0;
+
+       }
+
+       input[type='checkbox']:checked ~ #hamburger span:nth-child(3){
+
+         rotate:-45deg;
+
+         left:3px;
+
+       }
+
+       @media only screen and (max-width:576px){
+
+        #hamburger{
+
+            display: block;
+
+        }
+
+        #navitems{
+
+            position: absolute;
+
+            top:80px;
+
+            left:-100%;
+
+            margin-left:0;
+
+            height:calc(100vh - 80px);
+
+            background-color: #222;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            width:100%;
+
+            
+
+        }
+
+        #navitems a{
+
+            color:#fff;
+
+        }
+
+        input[type='checkbox']:checked ~ #navitems{
+
+            left:0;
+
+        }
+
+       }
+
+       * {box-sizing: border-box;}
+
+body {font-family: Verdana, sans-serif;}
+
+.mySlides {display: none;}
+
+img {vertical-align: middle;
+
+  background-color: aqua;
+
+}
+
+
+
+/* Slideshow container */
+
+.slideshow-container {
+
+  max-width: 1000px;
+
+  position: relative;
+
+  margin: auto;
+
+}
+
+
+
+/* Caption text */
+
+.text {
+
+  color: #f2f2f2;
+
+  font-size: 15px;
+
+  padding: 8px 12px;
+
+  position: absolute;
+
+  bottom: 8px;
+
+  width: 100%;
+
+  text-align: center;
+
+}
+
+
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+
+  color: #f2f2f2;
+
+  font-size: 12px;
+
+  padding: 8px 12px;
+
+  position: absolute;
+
+  top: 0;
+
+}
+
+
+
+/* The dots/bullets/indicators */
+
+.dot {
+
+  height: 15px;
+
+  width: 15px;
+
+  margin: 0 2px;
+
+  background-color: #bbb;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  transition: background-color 0.6s ease;
+
+}
+
+
+
+.active {
+
+  background-color: #717171;
+
+}
+
+
+
+/* Fading animation */
+
+.fade {
+
+  animation-name: fade;
+
+  animation-duration: 1.5s;
+
+}
+
+
+
+@keyframes fade {
+
+  from {opacity: .4} 
+
+  to {opacity: 1}
+
+}
+
+
+
+/* On smaller screens, decrease text size */
+
+@media only screen and (max-width: 300px) {
+
+  .text {font-size: 11px}
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+     <div id="header">
+
+      
+
+        <div id="logo">Branded Cloths</div>
+        <div id="searchbar">
+    <input type="text" placeholder="Search..." id="search-input">
+    <button id="search-btn">🔍</button>
+</div>
+
+
+        
+
+        <input type="checkbox">
+
+        <div id="hamburger">
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </div>
+
+        <div id="navitems">
+
+          
+
+            <a href="file:///C:/Users/abhis/OneDrive/Desktop/IBM%20home.html">Home</a>
+
+            <a href="file:///C:/Users/abhis/OneDrive/Desktop/html/about.html">About</a>
+
+            <a href="file:///C:/Users/abhis/OneDrive/Desktop/html/services.html">Services</a>
+
+            <a href="file:///C:/Users/abhis/OneDrive/Desktop/html/loginproject.html">Login</a>
+
+        </div>
+
+        <div id="icon"></div>
+
+
+
+    </div>
+
+    <div class="slideshow-container">
+
+
+
+        <div class="mySlides fade">
+
+          <div class="numbertext"></div>
+
+          <img src="https://images.hindustantimes.com/img/2022/09/07/1600x900/peter_england_shirts_for_men_1662544798351_1662544810306_1662544810306.jpg"style="width:100%">
+
+          <div class="text"></div>
+
+        </div>
+
+        
+
+        <div class="mySlides fade">
+
+          <div class="numbertext"></div>
+
+          <img src="https://wallpapercave.com/wp/wp11150844.jpg" style="width:100%">
+
+          <div class="text"></div>
+
+        </div>
+
+        
+
+        <div class="mySlides fade">
+
+          <div class="numbertext"></div>
+
+          <img src="https://c4.wallpaperflare.com/wallpaper/258/117/213/kareena-kapoor-iball-wallpaper-preview.jpg" style="width:100%">
+
+          <div class="text"></div>
+
+        </div>
+
+        <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://wallpapercave.com/wp/wp2623195.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://c4.wallpaperflare.com/wallpaper/928/899/791/chitrangada-singh-women-s-red-scoop-neck-floral-shoulder-dress-wallpaper-preview.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://img.freepik.com/free-photo/attractive-stylish-smiling-woman-choosing-apparel-clothing-store_285396-4642.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://media.istockphoto.com/id/1092715214/photo/two-glad-positive-grinning-lady-stand-in-glasses-spectacles-street-style-stylish-trendy-cool.jpg?s=612x612&w=0&k=20&c=ypVq4SYum8SDK8S8or7jq6svxaKMSW4eSh4l1dlnmSU=" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://www.indiaretailing.com/wp-content/uploads/2021/04/peterengland-FINAL.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://c4.wallpaperflare.com/wallpaper/141/156/4/tv-show-house-of-lies-wallpaper-preview.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+          <div class="mySlides fade">
+
+            <div class="numbertext"></div>
+
+            <img src="https://m.media-amazon.com/images/I/51GgluXWQML.AC_UY1100.jpg" style="width:100%">
+
+            <div class="text"></div>
+
+          </div>
+
+        
+
+        </div>
+
+        <br>
+
+        
+
+        <div style="text-align:center">
+
+          <span class="dot"></span>
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span>
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+        </div>
+        
+        <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+        </script>
+        
+</body>
+</html>
